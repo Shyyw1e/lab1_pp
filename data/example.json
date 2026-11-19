@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "venues": [
+    {
+      "id": "0ae399e6-ea42-4b61-b767-7b0df04a35b4",
+      "name": "Концертный зал",
+      "address": "ул. Мира, 1",
+      "capacity": 3
+    }
+  ],
+  "events": [
+    {
+      "id": "e4408302-1202-49fb-b76d-f87b3c236e0b",
+      "title": "Джазовый вечер",
+      "venue_id": "0ae399e6-ea42-4b61-b767-7b0df04a35b4",
+      "starts_at": "2027-05-20T19:00:00",
+      "price": "1250.50"
+    }
+  ],
+  "customers": [
+    {
+      "id": "c697c65e-f19a-49e6-8dd5-aab35dcf9cd3",
+      "name": "Анна",
+      "email": "anna@example.org"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "dd860c70-8e3a-43e4-ac89-75d7eb5a2c20",
+      "event_id": "e4408302-1202-49fb-b76d-f87b3c236e0b",
+      "customer_id": "c697c65e-f19a-49e6-8dd5-aab35dcf9cd3",
+      "quantity": 2,
+      "unit_price": "1250.50",
+      "status": "active"
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="booking-classes" name="Бронирование билетов">
+    <mxGraphModel dx="2100" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="venue" value="Venue — площадка" vertex="1" parent="1" style="swimlane;html=1;startSize=36;horizontal=1;collapsible=0;fontStyle=1;fontSize=15;fillColor=#dae8fc;strokeColor=#333333;align=center;">
+          <mxGeometry x="40" y="60" width="310" height="183" as="geometry" />
+        </mxCell>
+        <mxCell id="venue-attrs" value="+ id: str {readOnly, UUID4, init=False}&lt;br&gt;+ name: str&lt;br&gt;+ address: str&lt;br&gt;+ capacity: int" vertex="1" parent="venue" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="36" width="310" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="venue-methods" value="+ __post_init__(): None" vertex="1" parent="venue" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="144" width="310" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="venue-separator" vertex="1" parent="venue" style="line;strokeWidth=1;strokeColor=#333333;">
+          <mxGeometry x="0" y="144" width="310" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="event" value="Event — мероприятие" vertex="1" parent="1" style="swimlane;html=1;startSize=36;horizontal=1;collapsible=0;fontStyle=1;fontSize=15;fillColor=#dae8fc;strokeColor=#333333;align=center;">
+          <mxGeometry x="460" y="60" width="310" height="206" as="geometry" />
+        </mxCell>
+        <mxCell id="event-attrs" value="+ id: str {readOnly, UUID4, init=False}&lt;br&gt;+ title: str&lt;br&gt;+ venue_id: str&lt;br&gt;+ starts_at: datetime&lt;br&gt;+ price: Decimal" vertex="1" parent="event" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="36" width="310" height="131" as="geometry" />
+        </mxCell>
+        <mxCell id="event-methods" value="+ __post_init__(): None" vertex="1" parent="event" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="167" width="310" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="event-separator" vertex="1" parent="event" style="line;strokeWidth=1;strokeColor=#333333;">
+          <mxGeometry x="0" y="167" width="310" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="customer" value="Customer — клиент" vertex="1" parent="1" style="swimlane;html=1;startSize=36;horizontal=1;collapsible=0;fontStyle=1;fontSize=15;fillColor=#dae8fc;strokeColor=#333333;align=center;">
+          <mxGeometry x="880" y="60" width="310" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="customer-attrs" value="+ id: str {readOnly, UUID4, init=False}&lt;br&gt;+ name: str&lt;br&gt;+ email: str" vertex="1" parent="customer" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="36" width="310" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="customer-methods" value="+ __post_init__(): None" vertex="1" parent="customer" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="121" width="310" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="customer-separator" vertex="1" parent="customer" style="line;strokeWidth=1;strokeColor=#333333;">
+          <mxGeometry x="0" y="121" width="310" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="booking" value="Booking — бронирование" vertex="1" parent="1" style="swimlane;html=1;startSize=36;horizontal=1;collapsible=0;fontStyle=1;fontSize=15;fillColor=#dae8fc;strokeColor=#333333;align=center;">
+          <mxGeometry x="1300" y="60" width="350" height="252" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-attrs" value="+ id: str {readOnly, UUID4, init=False}&lt;br&gt;+ event_id: str&lt;br&gt;+ customer_id: str&lt;br&gt;+ quantity: int&lt;br&gt;+ unit_price: Decimal&lt;br&gt;+ status: BookingStatus" vertex="1" parent="booking" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="36" width="350" height="154" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-methods" value="+ __post_init__(): None&lt;br&gt;+ total: Decimal {readOnly, property}" vertex="1" parent="booking" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="190" width="350" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-separator" vertex="1" parent="booking" style="line;strokeWidth=1;strokeColor=#333333;">
+          <mxGeometry x="0" y="190" width="350" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="status" value="«enumeration» BookingStatus" vertex="1" parent="1" style="swimlane;html=1;startSize=36;horizontal=1;collapsible=0;fontStyle=1;fontSize=15;fillColor=#fff2cc;strokeColor=#333333;align=center;">
+          <mxGeometry x="1750" y="60" width="340" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="status-attrs" value="ACTIVE = &quot;active&quot;&lt;br&gt;CANCELLED = &quot;cancelled&quot;" vertex="1" parent="status" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="36" width="340" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="status-methods" value="" vertex="1" parent="status" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="98" width="340" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="status-separator" vertex="1" parent="status" style="line;strokeWidth=1;strokeColor=#333333;">
+          <mxGeometry x="0" y="98" width="340" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="system" value="BookingSystem — система" vertex="1" parent="1" style="swimlane;html=1;startSize=36;horizontal=1;collapsible=0;fontStyle=1;fontSize=15;fillColor=#d5e8d4;strokeColor=#333333;align=center;">
+          <mxGeometry x="450" y="500" width="430" height="413" as="geometry" />
+        </mxCell>
+        <mxCell id="system-attrs" value="- _venues: dict[str, Venue]&lt;br&gt;- _events: dict[str, Event]&lt;br&gt;- _customers: dict[str, Customer]&lt;br&gt;- _bookings: dict[str, Booking]&lt;br&gt;+ venues, events, customers, bookings&lt;br&gt;  {readOnly, MappingProxyType}" vertex="1" parent="system" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="36" width="430" height="154" as="geometry" />
+        </mxCell>
+        <mxCell id="system-methods" value="+ add_venue(venue: Venue)&lt;br&gt;+ add_event(event: Event)&lt;br&gt;+ add_customer(customer: Customer)&lt;br&gt;+ available_seats(event_id: str): int&lt;br&gt;+ book(event_id, customer_id, quantity): Booking&lt;br&gt;+ cancel(booking_id: str)&lt;br&gt;+ restore_booking(booking: Booking)&lt;br&gt;- _add(collection, item) {static}&lt;br&gt;- _get(collection, identifier) {static}" vertex="1" parent="system" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="190" width="430" height="223" as="geometry" />
+        </mxCell>
+        <mxCell id="system-separator" vertex="1" parent="system" style="line;strokeWidth=1;strokeColor=#333333;">
+          <mxGeometry x="0" y="190" width="430" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="storage" value="«abstract» FileStorage" vertex="1" parent="1" style="swimlane;html=1;startSize=36;horizontal=1;collapsible=0;fontStyle=1;fontSize=15;fillColor=#e1d5e7;strokeColor=#333333;align=center;">
+          <mxGeometry x="1130" y="550" width="390" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="storage-attrs" value="" vertex="1" parent="storage" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="36" width="390" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="storage-methods" value="+ encode(data: dict): str {abstract}&lt;br&gt;+ decode(content: str): dict {abstract}&lt;br&gt;+ save(system: BookingSystem, path)&lt;br&gt;+ load(path): BookingSystem" vertex="1" parent="storage" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="74" width="390" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="storage-separator" vertex="1" parent="storage" style="line;strokeWidth=1;strokeColor=#333333;">
+          <mxGeometry x="0" y="74" width="390" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="json" value="JsonStorage" vertex="1" parent="1" style="swimlane;html=1;startSize=36;horizontal=1;collapsible=0;fontStyle=1;fontSize=15;fillColor=#e1d5e7;strokeColor=#333333;align=center;">
+          <mxGeometry x="1020" y="950" width="310" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="json-attrs" value="" vertex="1" parent="json" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="36" width="310" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="json-methods" value="+ encode(data: dict): str&lt;br&gt;+ decode(content: str): dict" vertex="1" parent="json" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="74" width="310" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="json-separator" vertex="1" parent="json" style="line;strokeWidth=1;strokeColor=#333333;">
+          <mxGeometry x="0" y="74" width="310" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xml" value="XmlStorage" vertex="1" parent="1" style="swimlane;html=1;startSize=36;horizontal=1;collapsible=0;fontStyle=1;fontSize=15;fillColor=#e1d5e7;strokeColor=#333333;align=center;">
+          <mxGeometry x="1450" y="950" width="310" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="xml-attrs" value="" vertex="1" parent="xml" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="36" width="310" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="xml-methods" value="+ encode(data: dict): str&lt;br&gt;+ decode(content: str): dict" vertex="1" parent="xml" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="74" width="310" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="xml-separator" vertex="1" parent="xml" style="line;strokeWidth=1;strokeColor=#333333;">
+          <mxGeometry x="0" y="74" width="310" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="exception" value="«built-in» Exception" vertex="1" parent="1" style="swimlane;html=1;startSize=36;horizontal=1;collapsible=0;fontStyle=1;fontSize=15;fillColor=#f8cecc;strokeColor=#333333;align=center;">
+          <mxGeometry x="80" y="1160" width="300" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="exception-attrs" value="" vertex="1" parent="exception" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="36" width="300" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="exception-methods" value="" vertex="1" parent="exception" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="74" width="300" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="exception-separator" vertex="1" parent="exception" style="line;strokeWidth=1;strokeColor=#333333;">
+          <mxGeometry x="0" y="74" width="300" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bookingError" value="BookingError" vertex="1" parent="1" style="swimlane;html=1;startSize=36;horizontal=1;collapsible=0;fontStyle=1;fontSize=15;fillColor=#f8cecc;strokeColor=#333333;align=center;">
+          <mxGeometry x="40" y="890" width="310" height="113" as="geometry" />
+        </mxCell>
+        <mxCell id="bookingError-attrs" value="" vertex="1" parent="bookingError" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="36" width="310" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="bookingError-methods" value="Нарушение правил бронирования" vertex="1" parent="bookingError" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="74" width="310" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="bookingError-separator" vertex="1" parent="bookingError" style="line;strokeWidth=1;strokeColor=#333333;">
+          <mxGeometry x="0" y="74" width="310" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="storageError" value="StorageError" vertex="1" parent="1" style="swimlane;html=1;startSize=36;horizontal=1;collapsible=0;fontStyle=1;fontSize=15;fillColor=#f8cecc;strokeColor=#333333;align=center;">
+          <mxGeometry x="470" y="1160" width="340" height="113" as="geometry" />
+        </mxCell>
+        <mxCell id="storageError-attrs" value="" vertex="1" parent="storageError" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="36" width="340" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="storageError-methods" value="Ошибка файла или структуры данных" vertex="1" parent="storageError" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fontSize=12;overflow=hidden;">
+          <mxGeometry x="0" y="74" width="340" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="storageError-separator" vertex="1" parent="storageError" style="line;strokeWidth=1;strokeColor=#333333;">
+          <mxGeometry x="0" y="74" width="340" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-1" value="проходит на площадке" edge="1" parent="1" source="venue" target="event" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-1-start" value="1" vertex="1" connectable="0" parent="edge-1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="-0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1-end" value="0..*" vertex="1" connectable="0" parent="edge-1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="билеты на мероприятие" edge="1" parent="1" source="event" target="booking" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-2-start" value="1" vertex="1" connectable="0" parent="edge-2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="-0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2-end" value="0..*" vertex="1" connectable="0" parent="edge-2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="оформляет" edge="1" parent="1" source="customer" target="booking" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-3-start" value="1" vertex="1" connectable="0" parent="edge-3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="-0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3-end" value="0..*" vertex="1" connectable="0" parent="edge-3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="status" edge="1" parent="1" source="booking" target="status" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;dashed=1;endArrow=open;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-5" value="хранит" edge="1" parent="1" source="system" target="venue" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;startArrow=diamond;startFill=0;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-5-start" value="1" vertex="1" connectable="0" parent="edge-5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="-0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-5-end" value="0..*" vertex="1" connectable="0" parent="edge-5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-6" value="хранит" edge="1" parent="1" source="system" target="event" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;startArrow=diamond;startFill=0;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-6-start" value="1" vertex="1" connectable="0" parent="edge-6" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="-0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-6-end" value="0..*" vertex="1" connectable="0" parent="edge-6" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-7" value="хранит" edge="1" parent="1" source="system" target="customer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;startArrow=diamond;startFill=0;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-7-start" value="1" vertex="1" connectable="0" parent="edge-7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="-0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-7-end" value="0..*" vertex="1" connectable="0" parent="edge-7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-8" value="хранит" edge="1" parent="1" source="system" target="booking" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;startArrow=diamond;startFill=0;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-8-start" value="1" vertex="1" connectable="0" parent="edge-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="-0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-8-end" value="0..*" vertex="1" connectable="0" parent="edge-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=12;">
+          <mxGeometry x="0.8" y="-14" relative="1" as="geometry">
+            <mxPoint x="0" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-9" value="" edge="1" parent="1" source="json" target="storage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;endArrow=block;endFill=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-10" value="" edge="1" parent="1" source="xml" target="storage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;endArrow=block;endFill=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-11" value="сохраняет / восстанавливает" edge="1" parent="1" source="storage" target="system" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;dashed=1;endArrow=open;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-12" value="выбрасывает" edge="1" parent="1" source="system" target="bookingError" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;dashed=1;endArrow=open;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-13" value="выбрасывает" edge="1" parent="1" source="storage" target="storageError" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;dashed=1;endArrow=open;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-14" value="" edge="1" parent="1" source="bookingError" target="exception" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;endArrow=block;endFill=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-15" value="" edge="1" parent="1" source="storageError" target="exception" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=12;labelBackgroundColor=#ffffff;endArrow=block;endFill=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" vertex="1" parent="1" value="&lt;b&gt;Соответствие коду и правила&lt;/b&gt;&lt;br&gt;models.py: Venue, Event, Customer, Booking — frozen dataclass.&lt;br&gt;service.py: BookingSystem. storage.py: FileStorage, JsonStorage, XmlStorage.&lt;br&gt;ID генерируются автоматически: str(uuid4()), init=False.&lt;br&gt;В меню — выбор по номеру, ввод и изменение ID отсутствуют.&lt;br&gt;Загрузчик восстанавливает UUID4 из файла, сохраняя связи.&lt;br&gt;Вместимость ограничивает сумму билетов только активных броней.&lt;br&gt;Отмена освобождает места; unit_price сохраняет цену на момент бронирования.&lt;br&gt;main.py: цикл меню обрабатывает BookingError, StorageError, ValueError,&lt;br&gt;InvalidOperation, EOFError, KeyboardInterrupt.&lt;br&gt;FileStorage.load преобразует ошибки чтения и проверки в StorageError.&lt;br&gt;Полый треугольник — наследование; полый ромб — агрегация;&lt;br&gt;пунктир — зависимость; 1 и 0..* — кратности ассоциаций." style="shape=note;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=15;size=20;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;">
+          <mxGeometry x="1080" y="1220" width="950" height="340" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
